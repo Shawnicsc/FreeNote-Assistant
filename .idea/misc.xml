@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="$USER_HOME$/anaconda3/envs/fastapi" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="$USER_HOME$/anaconda3/envs/fastapi" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="$USER_HOME$/anaconda3/envs/note" project-jdk-type="Python SDK" />
 </project>

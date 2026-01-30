@@ -139,69 +139,83 @@ onBeforeUnmount(() => {
 }
 /* 正文排版 */
 :deep(.cm-content) {
-  font-size: 15.5px;
+  font-size: 16px;
   line-height: 1.8;
-  padding: 10px 6px;
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Helvetica,
-    Arial,
-    sans-serif;
-  letter-spacing: 0.01em;
+  padding: 10px 0;
+  font-family: 'SF Pro Text', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1d1d1f;
+  letter-spacing: -0.011em;
 }
-
 
 /* 段落之间留白 */
 :deep(.cm-line) {
-  padding: 2px 0;
+  padding: 4px 0;
 }
 
-/* 标题层级（CodeMirror Markdown token class） */
-:deep(.cm-header.cm-header-1) {
+/* 标题层级 */
+:deep(.cm-header) {
+  color: #1d1d1f;
+  font-family: 'SF Pro Display', sans-serif;
+  letter-spacing: -0.022em;
+}
+
+:deep(.cm-header-1) {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+}
+
+:deep(.cm-header-2) {
   font-size: 1.8em;
   font-weight: 600;
-  margin: 0.6em 0 0.4em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
-:deep(.cm-header.cm-header-2) {
-  font-size: 1.5em;
+:deep(.cm-header-3) {
+  font-size: 1.4em;
   font-weight: 600;
-  margin: 0.5em 0 0.3em;
-}
-
-:deep(.cm-header.cm-header-3) {
-  font-size: 1.25em;
-  font-weight: 600;
-  margin: 0.4em 0 0.2em;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
 }
 
 /* 引用 */
 :deep(.cm-quote) {
-  color: #555;
-  padding-left: 12px;
-  border-left: 3px solid #ddd;
+  color: #86868b;
+  padding-left: 1.5em;
+  border-left: 3px solid #d2d2d7;
+  font-style: italic;
+}
+
+/* 链接 */
+:deep(.cm-link) {
+  color: #0071e3;
+  text-decoration: none;
+}
+:deep(.cm-link:hover) {
+  text-decoration: underline;
 }
 
 /* 行内代码 */
 :deep(.cm-inline-code) {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  background: #f5f5f5;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-size: 0.9em;
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #f5f5f7;
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-size: 0.85em;
+  color: #e03131;
 }
 
-/* 代码块（先做最轻样式） */
+/* 代码块 */
 :deep(.cm-codeblock) {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  background: #fafafa;
-  padding: 8px;
-  border-radius: 6px;
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #f5f5f7;
+  padding: 1.2em;
+  border-radius: 12px;
   font-size: 0.9em;
+  margin: 1em 0;
+  border: 1px solid #d2d2d7/30;
 }
 /* 去除 CodeMirror 获取焦点时的虚线框 */
 :deep(.cm-editor.cm-focused) {

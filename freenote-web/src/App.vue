@@ -1,52 +1,64 @@
 <template>
-  <el-container class="app-shell">
-    <el-header height="48px" class="app-header">
-      <el-menu
-        mode="horizontal"
-        :default-active="activePath"
-        router
-      >
-        <el-menu-item index="/editor">编辑</el-menu-item>
-        <el-menu-item index="/knowledge">知识库</el-menu-item>
-        <el-menu-item index="/settings">设置</el-menu-item>
-      </el-menu>
-    </el-header>
+  <div class="min-h-screen flex flex-col">
+    <!-- Apple Style Glass Header -->
+    <header class="glass-header h-12 flex items-center justify-between px-6">
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-2 cursor-pointer group" @click="router.push('/editor')">
+          <div class="w-6 h-6 bg-black rounded-md flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span class="text-white text-[10px] font-bold">FN</span>
+          </div>
+          <span class="text-[15px] font-semibold tracking-tight">FreeNote</span>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-6">
+          <router-link 
+            v-for="item in navItems" 
+            :key="item.path"
+            :to="item.path"
+            class="text-[13px] font-medium transition-colors hover:text-[#0071e3]"
+            :class="[route.path.startsWith(item.path) ? 'text-[#1d1d1f]' : 'text-[#86868b]']"
+          >
+            {{ item.name }}
+          </router-link>
+        </nav>
+      </div>
 
-    <el-main class="app-main">
-      <router-view />
-    </el-main>
-  </el-container>
+      <div class="flex items-center gap-4">
+        <!-- Optional: User Profile or Quick Actions -->
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-auto">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
-const activePath = route.path
+const router = useRouter()
+
+const navItems = [
+  { name: '编辑器', path: '/editor' },
+  { name: '知识库', path: '/knowledge' },
+  { name: '设置', path: '/settings' },
+]
 </script>
 
-<style scoped>
-.app-header {
-  height: 44px;
-  background: #ffffff;
-  border-bottom: 1px solid #e6e8eb;
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
 }
 
-.app-main {
-  padding: 16px;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
-.el-menu--horizontal {
-  border-bottom: none;
-}
-
-.el-menu-item {
-  font-size: 14px;
-  color: #555;
-}
-
-.el-menu-item.is-active {
-  font-weight: 500;
-  color: #111;
-}
-
 </style>

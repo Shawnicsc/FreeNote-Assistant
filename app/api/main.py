@@ -1,5 +1,7 @@
 # 获取配置
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 from app.agent.rewrite_agent import RewriteAgent
 from app.agent.summary_agent import SummaryAgent
@@ -17,6 +19,17 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# 配置 CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 允许所有源，开发环境下建议
+    allow_credentials=True,
+    allow_methods=["*"],  # 允许所有方法 (GET, POST, OPTIONS 等)
+    allow_headers=["*"],  # 允许所有头
+)
+
+class AIRequest(BaseModel):
+    content: str
 
 @app.get("/health", tags=["Health"])
 def health():
@@ -29,26 +42,14 @@ def get_docs():
     return  documents
 
 
-@app.get("/summary")
-def summary():
-    documents = read_document()
+@app.post("/summary")
+def summary(request: AIRequest):
     summary_agent = SummaryAgent()
-    result = []
+    res = summary_agent.run(document_content=request.content)
+    return res
 
-    for doc in documents:
-        res = summary_agent.run(document_content=doc.document_content)
-        result.append(res)
-
-    return result
-
-@app.get("/rewrite")
-def rewrite():
-    documents = read_document()
+@app.post("/rewrite")
+def rewrite(request: AIRequest):
     rewrite_agent = RewriteAgent()
-    result = []
-
-    for doc in documents:
-        if doc.document_title == "AI 大模型应用开发笔记":
-            result.append(rewrite_agent.run(doc.document_content))
-
-    return result
+    res = rewrite_agent.run(request.content)
+    return res

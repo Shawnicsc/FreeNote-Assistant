@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Any
 
 from pydantic import Field
 from pydantic import BaseModel
@@ -18,6 +19,46 @@ class DocumentRequest(BaseModel):
     document_title: str = Field(..., description="The title of the document")
     document_content: str = Field(..., description="The content of the document")
 
+class AIRequest(BaseModel):
+    content: str
+
+class SummaryStructure(BaseModel):
+    section: str = Field(..., description="章节或主题名称")
+    description: str = Field(..., description="该部分主要内容概述")
+
+class SummaryResponse(BaseModel):
+    title: str = Field(..., description="文档主题概括")
+    summary: str = Field(..., description="全文总结")
+    key_points: list[str] = Field(..., description="关键要点列表")
+    structure: list[SummaryStructure] = Field(..., description="章节结构列表")
+
+class RewriteResponse(BaseModel):
+    title: str = Field(..., description="润色后的文档标题")
+    rewritten_content: str = Field(..., description="完整润色后的文档正文")
+    changes_summary: list[str] = Field(..., description="修改要点列表")
+
+class UmlResponse(BaseModel):
+    uml_code: str = Field(..., description="生成的 Mermaid UML 代码")
+    uml_type: str = Field(..., description="UML 图表类型（如 flowbox, sequence, class 等）")
+    description: str = Field(..., description="图表内容的简要描述")
+
+class UmlEntity(BaseModel):
+    id: str = Field(..., description="唯一标识符")
+    label: str = Field(..., description="显示名称")
+    type: str | None = Field(None, description="实体类型（如 actor, component, class 等）")
+
+class UmlRelationship(BaseModel):
+    source: str = Field(..., description="源实体 ID")
+    target: str = Field(..., description="目标实体 ID")
+    label: str | None = Field(None, description="关系描述")
+    type: str | None = Field(None, description="关系类型（如 sequence_call, association, dependency 等）")
+
+class UmlIR(BaseModel):
+    chart_type: str = Field(..., description="建议的图表类型")
+    title: str = Field(..., description="图表标题")
+    entities: list[UmlEntity] = Field(..., description="实体/节点列表")
+    relationships: list[UmlRelationship] = Field(..., description="关系/连线列表")
+    metadata: dict[str, Any] | None = Field(None, description="额外元数据")
 
 _next_id = 1
 

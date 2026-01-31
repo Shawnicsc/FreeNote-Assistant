@@ -1,7 +1,8 @@
 from app.agent.base_agent import BaseAgent
+from app.model.schema import SummaryResponse
 
 
-class SummaryAgent(BaseAgent):
+class SummaryAgent(BaseAgent[SummaryResponse]):
     """
        SummaryAgent
        - 负责对文档内容进行总结
@@ -9,3 +10,4 @@ class SummaryAgent(BaseAgent):
        """
 
     prompt_name: str = "summary_prompt.jinja2"
+    response_model = SummaryResponse

@@ -1,7 +1,8 @@
 from app.agent.base_agent import BaseAgent
+from app.model.schema import RewriteResponse
 
 
-class RewriteAgent(BaseAgent):
+class RewriteAgent(BaseAgent[RewriteResponse]):
     """
        RewriteAgent
        - 负责对文档内容进行改写
@@ -9,3 +10,4 @@ class RewriteAgent(BaseAgent):
        """
 
     prompt_name: str = "rewrite_prompt.jinja2"
+    response_model = RewriteResponse

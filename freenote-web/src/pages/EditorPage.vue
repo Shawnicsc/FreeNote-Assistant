@@ -44,7 +44,13 @@
           >
             润色
           </button>
-          <button class="px-3 py-1 text-[12px] font-medium rounded-md hover:bg-white hover:shadow-sm transition-all text-[#1d1d1f]">UML</button>
+          <button 
+            @click="handleUml"
+            :disabled="isAIProcessing || !documentStore.content"
+            class="px-3 py-1 text-[12px] font-medium rounded-md hover:bg-white hover:shadow-sm transition-all text-[#1d1d1f] disabled:opacity-50"
+          >
+            UML
+          </button>
         </div>
 
         <button @click="openFile" class="apple-button-secondary !py-1.5 !px-3 text-[13px] gap-1.5">
@@ -75,9 +81,10 @@
       v-model="summaryDialogVisible"
       title="文档智能总结"
       width="600px"
-      custom-class="apple-dialog"
+      class="apple-dialog"
+      align-center
     >
-      <div v-if="summaryData" class="space-y-6">
+      <div v-if="summaryData" class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
         <div>
           <h3 class="text-lg font-bold text-[#1d1d1f] mb-2">{{ summaryData.title }}</h3>
           <p class="text-[15px] leading-relaxed text-[#424245]">{{ summaryData.summary }}</p>
@@ -112,25 +119,35 @@
     <el-dialog
       v-model="rewriteDialogVisible"
       title="文档智能润色"
-      width="800px"
-      custom-class="apple-dialog"
+      width="90%"
+      style="max-width: 1200px"
+      class="apple-dialog"
+      align-center
     >
-      <div v-if="rewriteData" class="grid grid-cols-2 gap-6 h-[500px]">
-        <div class="flex flex-col">
-          <h4 class="text-xs font-semibold text-[#86868b] uppercase mb-2">修改建议</h4>
-          <div class="flex-1 overflow-auto bg-[#f5f5f7] p-4 rounded-xl">
-            <ul class="space-y-3">
-              <li v-for="(change, index) in rewriteData.changes_summary" :key="index" class="text-[13px] flex items-start gap-2">
-                <span class="mt-1 text-[#0071e3]">✓</span>
+      <div v-if="rewriteData" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[65vh] overflow-hidden">
+        <div class="flex flex-col min-h-0">
+          <h4 class="text-xs font-semibold text-[#86868b] uppercase mb-3 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            修改建议
+          </h4>
+          <div class="flex-1 overflow-y-auto bg-[#f5f5f7] p-5 rounded-2xl border border-[#d2d2d7]/20">
+            <ul class="space-y-4">
+              <li v-for="(change, index) in rewriteData.changes_summary" :key="index" class="text-[14px] leading-relaxed text-[#1d1d1f] flex items-start gap-3">
+                <span class="mt-1 text-[#0071e3] font-bold text-sm">✓</span>
                 {{ change }}
               </li>
             </ul>
           </div>
         </div>
-        <div class="flex flex-col">
-          <h4 class="text-xs font-semibold text-[#86868b] uppercase mb-2">润色后内容</h4>
-          <div class="flex-1 overflow-auto border border-[#d2d2d7]/30 p-4 rounded-xl text-[14px] leading-relaxed whitespace-pre-wrap">
-            {{ rewriteData.rewritten_content }}
+        <div class="flex flex-col min-h-0">
+          <h4 class="text-xs font-semibold text-[#86868b] uppercase mb-3 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+            润色后内容
+          </h4>
+          <div class="flex-1 overflow-y-auto border border-[#d2d2d7]/50 p-6 rounded-2xl bg-white shadow-inner">
+            <div class="text-[15px] leading-loose text-[#1d1d1f] whitespace-pre-wrap font-serif">
+              {{ rewriteData.rewritten_content }}
+            </div>
           </div>
         </div>
       </div>
@@ -141,12 +158,41 @@
         </div>
       </template>
     </el-dialog>
+
+    <!-- AI UML Dialog -->
+    <el-dialog
+      v-model="umlDialogVisible"
+      title="智能 UML 建模"
+      width="80%"
+      style="max-width: 1000px"
+      class="apple-dialog"
+      align-center
+    >
+      <div v-if="umlData" class="space-y-4 max-h-[70vh] overflow-hidden flex flex-col">
+        <div class="bg-[#f5f5f7] p-4 rounded-2xl flex-shrink-0">
+          <p class="text-[14px] text-[#424245] leading-relaxed">{{ umlData.description }}</p>
+        </div>
+        <div class="apple-card bg-white p-6 border border-[#d2d2d7]/30 overflow-auto flex-1">
+          <MermaidRenderer :code="umlData.uml_code" />
+        </div>
+        <div class="flex justify-center flex-shrink-0">
+          <span class="text-[11px] text-[#86868b] uppercase tracking-widest">Type: {{ umlData.uml_type }}</span>
+        </div>
+      </div>
+      <template #footer>
+        <div class="flex justify-end gap-3">
+          <button @click="copyUmlCode" class="apple-button-secondary px-6">复制代码</button>
+          <button @click="insertUmlAtCursor" class="apple-button-primary px-6">插入文档</button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import MarkdownEditor from '@/editor/MarkdownEditor.vue'
+import MermaidRenderer from '@/components/MermaidRenderer.vue'
 import { documentStore, replaceDocumentContent } from '@/document/document.store'
 import { watch } from 'vue'
 import { ElMessage } from 'element-plus'
@@ -163,6 +209,8 @@ const summaryDialogVisible = ref(false)
 const summaryData = ref<any>(null)
 const rewriteDialogVisible = ref(false)
 const rewriteData = ref<any>(null)
+const umlDialogVisible = ref(false)
+const umlData = ref<any>(null)
 
 const renderedMarkdown = computed(() => {
   return marked(documentStore.content || '')
@@ -179,7 +227,7 @@ async function handleSummary() {
   if (!documentStore.content) return
   isAIProcessing.value = true
   try {
-    const response = await fetch('http://localhost:8000/summary', {
+    const response = await fetch('http://localhost:8000/api/v1/ai/summary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: documentStore.content })
@@ -199,7 +247,7 @@ async function handleRewrite() {
   if (!documentStore.content) return
   isAIProcessing.value = true
   try {
-    const response = await fetch('http://localhost:8000/rewrite', {
+    const response = await fetch('http://localhost:8000/api/v1/ai/rewrite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: documentStore.content })
@@ -220,6 +268,42 @@ function applyRewrite() {
     replaceDocumentContent(rewriteData.value.rewritten_content)
     rewriteDialogVisible.value = false
     ElMessage.success('已应用润色内容')
+  }
+}
+
+async function handleUml() {
+  if (!documentStore.content) return
+  isAIProcessing.value = true
+  try {
+    const response = await fetch('http://localhost:8000/api/v1/ai/uml', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: documentStore.content })
+    })
+    const data = await response.json()
+    umlData.value = typeof data === 'string' ? JSON.parse(data) : data
+    umlDialogVisible.value = true
+  } catch (err) {
+    ElMessage.error('UML 生成失败，请检查后端连接')
+    console.error(err)
+  } finally {
+    isAIProcessing.value = false
+  }
+}
+
+function copyUmlCode() {
+  if (umlData.value?.uml_code) {
+    navigator.clipboard.writeText(umlData.value.uml_code)
+    ElMessage.success('Mermaid 代码已复制到剪贴板')
+  }
+}
+
+function insertUmlAtCursor() {
+  if (umlData.value?.uml_code) {
+    const mermaidBlock = `\n\n\`\`\`mermaid\n${umlData.value.uml_code}\n\`\`\`\n\n`
+    documentStore.content += mermaidBlock
+    umlDialogVisible.value = false
+    ElMessage.success('UML 图表已插入文档末尾')
   }
 }
 

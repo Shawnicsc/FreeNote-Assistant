@@ -1,45 +1,44 @@
 from pathlib import Path
-
-from jinja2 import Environment, FileSystemLoader
-
+from typing import Any, Generic, TypeVar
+from pydantic import BaseModel
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
 from app.core.llm_factory import get_llm
 
+T = TypeVar("T", bound=BaseModel)
 
-class BaseAgent:
+class BaseAgent(Generic[T]):
     """
-       BaseAgent
-       - 所有 Agent 的基类
-       - 负责 Prompt 加载、渲染和 LLM 调用
-       """
+    BaseAgent
+    - 基类
+    - 负责 Prompt 模板加载和 LCEL 链式调用
+    """
 
-    # 子类必须覆盖
     prompt_name: str | None = None
+    response_model: type[T] | None = None
 
     def __init__(self):
         if not self.prompt_name:
-            raise ValueError(
-                f"{self.__class__.__name__} 必须指定 prompt_name"
-            )
-
+            raise ValueError(f"{self.__class__.__name__} 必须指定 prompt_name")
+        
         self.llm = get_llm()
-
-        prompt_dir = Path(__file__).parent.parent / "prompt"
-        self.env = Environment(
-            loader=FileSystemLoader(prompt_dir),
-            autoescape=False,
+        
+        # 加载 Prompt 模板
+        prompt_path = Path(__file__).parent.parent / "prompt" / self.prompt_name
+        with open(prompt_path, "r", encoding="utf-8") as f:
+            template_content = f.read()
+            
+        self.prompt_template = ChatPromptTemplate.from_template(
+            template_content, 
+            template_format="jinja2"
         )
+        self.output_parser = JsonOutputParser()
+        
+        # 构建 LCEL 链
+        self.chain = self.prompt_template | self.llm | self.output_parser
 
-    def _build_prompt(self, document_content: str) -> str:
+    def run(self, document_content: str) -> T:
         """
-        使用 Jinja2 渲染 Prompt
+        使用 LangChain 执行链式调用
         """
-        template = self.env.get_template(self.prompt_name)
-        return template.render(document_content=document_content)
-
-    def run(self, document_content: str) -> str:
-        """
-        Agent 统一执行入口
-        """
-        prompt = self._build_prompt(document_content)
-        response = self.llm.invoke(prompt)
-        return response.content
+        return self.chain.invoke({"document_content": document_content})

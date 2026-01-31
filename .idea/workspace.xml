@@ -2,18 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d60add8-c475-4f2a-9f25-31b3d529950d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/agent/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/agent/summary_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/llm_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/agent/base_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/postcss.config.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/src/assets/vue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/src/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/tailwind.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai-markdown/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/agent/rewrite_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/agent/rewrite_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/agent/summary_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/agent/summary_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/llm_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/llm_factory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +51,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.document_tool.executor&quot;: &quot;Run&quot;,
-    &quot;Python.llm_service.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/shawni/PycharmProjects/hello-agent&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.app.executor": "Run",
+    "Python.document_tool.executor": "Run",
+    "Python.llm_service.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/shawni/PycharmProjects/FreeNote",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />

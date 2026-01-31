@@ -4,10 +4,8 @@ from app.config import get_settings
 
 settings = get_settings()
 
+# get llm instance
 def get_llm():
-    # print("LLM Settings:" )
-    # print(settings.model_id)
-    # print(settings.api_base_url)
     return ChatOpenAI(
         api_key=settings.api_key,
         model = settings.model_id,

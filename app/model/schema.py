@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import Field
 from pydantic import BaseModel
@@ -21,6 +21,14 @@ class DocumentRequest(BaseModel):
 
 class AIRequest(BaseModel):
     content: str
+
+class RagRequest(BaseModel):
+    question: str
+
+class ConfigUpdateRequest(BaseModel):
+    api_key: Optional[str] = None
+    base_url: Optional[str] = None
+    model_id: Optional[str] = None
 
 class SummaryStructure(BaseModel):
     section: str = Field(..., description="章节或主题名称")

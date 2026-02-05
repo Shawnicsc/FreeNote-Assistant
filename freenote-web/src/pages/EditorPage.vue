@@ -227,7 +227,7 @@ async function handleSummary() {
   if (!documentStore.content) return
   isAIProcessing.value = true
   try {
-    const response = await fetch('http://localhost:8000/api/v1/ai/summary', {
+    const response = await fetch('http://localhost:8000/note/ai/summary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: documentStore.content })
@@ -247,7 +247,7 @@ async function handleRewrite() {
   if (!documentStore.content) return
   isAIProcessing.value = true
   try {
-    const response = await fetch('http://localhost:8000/api/v1/ai/rewrite', {
+    const response = await fetch('http://localhost:8000/note/ai/rewrite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: documentStore.content })
@@ -275,7 +275,7 @@ async function handleUml() {
   if (!documentStore.content) return
   isAIProcessing.value = true
   try {
-    const response = await fetch('http://localhost:8000/api/v1/ai/uml', {
+    const response = await fetch('http://localhost:8000/note/ai/uml', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: documentStore.content })

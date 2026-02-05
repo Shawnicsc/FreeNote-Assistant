@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6d60add8-c475-4f2a-9f25-31b3d529950d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/agent/base_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/postcss.config.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/src/assets/vue.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/src/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/tailwind.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai-markdown/vite.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/agent/rewrite_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/agent/rewrite_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/agent/summary_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/agent/summary_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/ai.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/docs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/llm_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/llm_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/EditorPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/EditorPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/KnowledgePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/KnowledgePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/SettingsPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/SettingsPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,21 +47,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.app.executor": "Run",
-    "Python.document_tool.executor": "Run",
-    "Python.llm_service.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/shawni/PycharmProjects/FreeNote",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.document_tool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.llm_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/software/Anaconda3/Scripts/conda.exe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\BUPT\\personal\\FreeNote-Assistant\\freenote-web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
@@ -80,7 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -103,7 +106,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/tools/document_tool.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -126,7 +129,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/service/llm_service.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -144,6 +147,15 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
+        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6d60add8-c475-4f2a-9f25-31b3d529950d" name="Changes" comment="" />
@@ -151,8 +163,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769063162829</updated>
+      <workItem from="1770106993267" duration="1118000" />
+      <workItem from="1770108222397" duration="932000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FreeNote_Assistant$app.coverage" NAME="app Coverage Results" MODIFIED="1770108232367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

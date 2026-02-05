@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:3000"
 
     log_level: str = "INFO"
+    local_file_path: str = os.getenv("Local_File_Path", "D:\BUPT\personal\markdown")
 
     """ LLM Settings"""
     api_key : str = os.getenv("LLM_API_KEY")

@@ -34,6 +34,10 @@ class Settings(BaseSettings):
     model_id : str = os.getenv("LLM_MODEL_ID", "gpt-3.5-turbo")
     api_base_url : str = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1")
 
+    """ Embedding Settings"""
+    embedding_model : str = os.getenv("LLM_EMBEDDING_MODEL", "BAAI/bge-small-zh-v1.5")
+
+
 settings = Settings()
 
 def get_settings():

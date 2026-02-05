@@ -1,6 +1,7 @@
-import os
 from typing import Optional
+
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+
 from app.config import get_settings
 
 settings = get_settings()
@@ -13,7 +14,7 @@ class AIConfigManager:
         self.api_key = settings.api_key
         self.base_url = settings.api_base_url
         self.model_id = settings.model_id
-        self.embedding_model = "text-embedding-3-small" # 默认嵌入模型
+        # self.embedding_model = "text-embedding-3-small" # 默认嵌入模型
 
     @classmethod
     def get_instance(cls):

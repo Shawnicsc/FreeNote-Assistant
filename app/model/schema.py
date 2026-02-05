@@ -47,19 +47,19 @@ class RewriteResponse(BaseModel):
 
 class UmlResponse(BaseModel):
     uml_code: str = Field(..., description="生成的 Mermaid UML 代码")
-    uml_type: str = Field(..., description="UML 图表类型（如 flowbox, sequence, class 等）")
+    uml_type: str = Field(..., description="UML 图表类型")
     description: str = Field(..., description="图表内容的简要描述")
 
 class UmlEntity(BaseModel):
     id: str = Field(..., description="唯一标识符")
     label: str = Field(..., description="显示名称")
-    type: str | None = Field(None, description="实体类型（如 actor, component, class 等）")
+    type: str | None = Field(None, description="实体类型")
 
 class UmlRelationship(BaseModel):
     source: str = Field(..., description="源实体 ID")
     target: str = Field(..., description="目标实体 ID")
     label: str | None = Field(None, description="关系描述")
-    type: str | None = Field(None, description="关系类型（如 sequence_call, association, dependency 等）")
+    type: str | None = Field(None, description="关系类型")
 
 class UmlIR(BaseModel):
     chart_type: str = Field(..., description="建议的图表类型")
@@ -67,6 +67,13 @@ class UmlIR(BaseModel):
     entities: list[UmlEntity] = Field(..., description="实体/节点列表")
     relationships: list[UmlRelationship] = Field(..., description="关系/连线列表")
     metadata: dict[str, Any] | None = Field(None, description="额外元数据")
+
+class RAGRequest(BaseModel):
+    question: str = Field(..., description="用户提出的问题")
+
+class RAGResponse(BaseModel):
+    answer: str = Field(..., description="基于检索内容生成的回答")
+    source: list[str] = Field(..., description="用于回答的文档来源列表")
 
 _next_id = 1
 

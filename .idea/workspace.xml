@@ -5,21 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d60add8-c475-4f2a-9f25-31b3d529950d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/rag/chain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rag/embedding.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rag/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rag/splitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rag/vectorstore.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/v1/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/ai.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/v1/endpoints/docs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/ai.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/llm_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/llm_factory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/EditorPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/EditorPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/KnowledgePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/KnowledgePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/freenote-web/src/pages/SettingsPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/freenote-web/src/pages/SettingsPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/rag/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/rag_service.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -107,6 +109,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/tools/document_tool.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -130,6 +133,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/service/llm_service.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />

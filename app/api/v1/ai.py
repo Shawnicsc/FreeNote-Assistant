@@ -2,11 +2,22 @@ from fastapi import APIRouter, Body, HTTPException
 from app.agent.summary_agent import SummaryAgent
 from app.agent.rewrite_agent import RewriteAgent
 from app.agent.uml_agent import UmlAgent
-from app.service.rag_service import rag_service
-from app.core.llm_factory import config_manager
-from app.model.schema import AIRequest, SummaryResponse, RewriteResponse, UmlResponse, RagRequest, ConfigUpdateRequest
+from app.config import get_settings
+from app.core.llm_factory import config_manager, get_llm
+from app.model.schema import AIRequest, SummaryResponse, RewriteResponse, UmlResponse, RagRequest, ConfigUpdateRequest, \
+    RAGResponse
+from app.rag.chain import build_rag_chain
+from app.rag.loader import load_markdown_docs
+from app.rag.splitter import split_docs
+from app.rag.vectorstore import build_vectorstore
 
 router = APIRouter()
+settings = get_settings()
+
+docs = load_markdown_docs(settings.local_file_path)
+chunks = split_docs(docs)
+vectorstore = build_vectorstore(chunks)
+rag_chain = build_rag_chain(get_llm(), vectorstore)
 
 @router.post("/summary", response_model=SummaryResponse)
 async def summary(request: AIRequest):
@@ -31,17 +42,19 @@ async def generate_uml(request: AIRequest):
     """
     agent = UmlAgent()
     return agent.run(request.content)
-
 @router.post("/rag")
-async def rag_query(request: RagRequest):
+async def rag_answer(data: RagRequest) :
     """
-    RAG 知识库问答接口
+     RAG回答
     """
-    try:
-        answer = rag_service.query(request.question)
-        return {"answer": answer}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    result = rag_chain(data.question)
+    return {
+        "answer": result["result"],
+        "sources": [
+            doc.metadata.get("source")
+            for doc in result["source_documents"]
+        ]
+    }
 
 @router.post("/config/update")
 async def update_ai_config(request: ConfigUpdateRequest):
